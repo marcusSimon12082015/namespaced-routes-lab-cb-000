@@ -1,11 +1,11 @@
 class ArtistsController < ApplicationController
   def index
     if !Preference.first.nil?
-      sort_order = Preference.first.song_sort_order 
+      sort_order = Preference.first.song_sort_order
       @artists = Artist.all.order('name '+sort_order)
     else
       @artists = Artist.all
-    end 
+    end
   end
 
   def show
