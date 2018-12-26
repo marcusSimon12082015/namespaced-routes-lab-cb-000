@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
   def index
-    @p = Preference.first
-    @artists = Artist.all.order('name '+@p.artist_sort_order)
+    sort_order = Preference.first.song_sort_order if !Preference.first.nil?
+    @artists = Artist.all.order('name '+sort_order)
   end
 
   def show
