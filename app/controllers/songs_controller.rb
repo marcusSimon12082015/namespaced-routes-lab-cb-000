@@ -9,7 +9,8 @@ class SongsController < ApplicationController
         @songs = @artist.songs
       end
     else
-      @songs = Song.all.order('name '+Preference.first.song_sort_order)
+      sort_order = Preference.first.song_sort_order if !Preference.first.nil?
+      @songs = Song.all.order('name '+sort_order)
     end
   end
 
